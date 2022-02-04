@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-
-
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class Test{
+class Test extends AbstractController{
 
     /**
      * @Route("/" , name="index")
@@ -21,6 +20,10 @@ class Test{
        
 
     }
+    public function home(ComplexeObjet $complexeObjet){
+
+        // $complexeObjet = doSomething();
+    }
 
     /**
      * @Route("/article/{articlesId?0}", name="show_article")
@@ -30,5 +33,15 @@ class Test{
         return new Response("Vous êtes sur la page de l'article numéro $articlesId");
 
     }
+
+    /**
+     * @Route("/hello-world/{name?World}", name="helloWorld")
+     */
+
+    public function helloWorld($name)
+    {
+        return new Response("Hello $name");
+    }
+    
 
 }

@@ -22,3 +22,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+        # Disponible seulement pour ce service
+    App\Services\MailLogger:
+        arguments:
+            $adminEmail: 'admin@openclassrooms.com'
+    
+    # Déclaration globale à tous les services
+    # déclarés dans ce fichier
+   
+     App\EventListener\BarListener:
+        tags:
+            - { name: kernel.event_listener, event: foo, method: doSomething, priority: 999 }
